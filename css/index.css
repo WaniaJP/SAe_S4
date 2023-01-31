@@ -1,0 +1,145 @@
+
+*{
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+}
+
+@font-face {
+	font-family: 'Think';
+	src:
+         url('../Free/Think.ttf') format('woff2'),
+		url('../Free/Think.ttf') format('truetype')
+
+}
+
+@font-face {
+	font-family: 'Caligna';
+	src: url('../CalignaDEMO/CalignaDEMO.ttf') format('woff2'),
+		url('../CalignaDEMO/CalignaDEMO.ttf') format('truetype')
+}
+body {
+	font-family:  'Caligna','Think', sans-serif;
+}
+.navbar{
+    border-bottom:13px solid #88B86A;
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.navbar .logo{
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.nav-lists{
+    align-items: center;
+}
+
+.nav-lists ul{
+    display: flex;    
+}
+.nav-lists ul li a{
+    font-size: 1.5em;
+    color: black;
+}
+.nav-lists ul li a:hover{
+    border-bottom: #88B86A 4px solid;
+}
+
+.nav-lists ul li.active a{
+    color: #88B86A;
+    font-weight: 100;
+}
+
+.nav-lists ul li{
+    display: flex;
+    padding: 1em;
+    align-items: center;
+
+}
+
+p, h1{
+    padding: 1em;
+    text-align: center;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    padding: 5em;
+    justify-content: center;
+}
+.second-container{
+    display: flex;
+    justify-content: center;
+
+}
+.child{
+    border: 3px solid black;
+    box-shadow: 5px 10px 0px black;
+    padding: 1em;
+    margin: 1em;
+    display: flex;
+    flex-direction: column;
+align-items: center;
+}
+
+.navbar-close{
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 30px;
+    width: 35px;
+}
+
+.btn{
+    border: 1px solid black;
+    box-shadow: 5px 10px 0px black;
+    padding: 1em;
+    margin: 1em;
+    width: 230px;
+    background-color: #88B86A;
+    color: white;
+    text-align: center;
+}
+
+.btn:hover{
+    cursor: pointer;
+}
+
+
+
+@media screen and (max-width: 900px){
+    .navbar{padding: 0;}
+    .navbar .logo{
+        position: absolute; 
+        top: 40px; 
+        left:50px
+    }
+    .mobile-menu{
+        margin-left: 0;
+    }
+    .nav-lists{
+        top: 0;
+        left: 0;
+        position: absolute;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        backdrop-filter: blur(8px);
+        transition: all 0.5s ease;
+    }
+    .nav-lists ul{
+        display: flex; 
+        flex-direction: column;
+        align-items: center;
+    }
+    .nav-lists ul li{margin: 25px 0; font-size: 1.2em;}
+    .navbar-close{display: block;}
+    
+}

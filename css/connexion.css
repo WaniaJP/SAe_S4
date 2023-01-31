@@ -1,0 +1,95 @@
+
+
+@font-face {
+	font-family: 'Roboto';
+	src: url('../CalignaDEMO/CalignaDEMO.ttf') format('woff2'),
+		url('../CalignaDEMO/CalignaDEMO.ttf') format('truetype')
+}
+body {
+	font-family: 'Roboto', sans-serif;
+    background-image: url("../assets/bg.jpg");
+}
+
+h1,h3{
+    text-align: center;
+}
+
+.modal{
+    border: 4px solid;
+box-shadow: 10px 10px 0px black;
+    padding: 1em;
+    background-color: white;
+    width: 50%;
+    margin: 70px auto;
+}
+
+
+
+label{padding: 1em;}
+
+input:focus{
+    border: 1px solid #dfe4ea;}
+
+input, .btn{
+    border: 1px solid black;
+    box-shadow: 5px 10px 0px black;
+    padding: 1em;
+    width: 230px;
+}
+
+.btn{
+    background-color: #88B86A;
+    color: white;
+    text-align: center;
+}
+
+.btn:hover{
+    cursor: pointer;
+}
+
+
+#form2{
+    display: none;
+}
+
+#form1 form{
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    align-items: center;
+}
+
+#form2 form{
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    align-items: center;
+}
+#first{
+    display: flex;
+}
+hr{
+    border-left: 7px solid black;
+}
+
+#first fieldset{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1em;
+margin: 1em;
+}
+
+#end{
+    padding: 1em;
+display: flex;
+flex-direction: column;
+text-align: center;
+align-items: center;
+border: none;
+}
+input[type="checkbox"]{box-shadow: none; width: auto;}
+.checkbox{padding: 1em;}
+fieldset{
+    border: none;
+}
