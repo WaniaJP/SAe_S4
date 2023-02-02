@@ -51,6 +51,23 @@ BEGIN
 END $$
 DELIMITER ;
 
+SELECT (COUNT(DISTINCT D.Alim_Code)/10)*100
+FROM DONNEES_SANTE D
+    JOIN REPONSE_SONDAGE R ON R.Alim_Code = D.Alim_Code
+    JOIN ALIMENTS A ON D.Alim_Code = A.Alim_Code
+WHERE R.Administre = 1
+AND (
+        D.Glucides_g100g IS NOT NULL OR 
+        D.Sucres_g100g IS NOT NULL OR 
+        D.Fructose_g100g IS NOT NULL OR 
+        D.Galactose_g100g IS NOT NULL OR 
+        D.Glucose_g100g IS NOT NULL OR 
+        D.Lactose_g100g IS NOT NULL OR 
+        D.Maltose_g100g IS NOT NULL OR 
+        D.Saccharose_g100g IS NOT NULL
+    )
+ORDER BY 1 DSC;
+
 DELIMITER $$
 CREATE FUNCTION TAUX_FIBRES(IdP INT) RETURNS DECIMAL(10,2)
 BEGIN
