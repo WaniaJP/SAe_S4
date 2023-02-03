@@ -48,7 +48,7 @@ input, .btn{
 }
 
 
-#form2{
+#form2, #msgPassword{
     display: none;
 }
 
@@ -93,3 +93,26 @@ input[type="checkbox"]{box-shadow: none; width: auto;}
 fieldset{
     border: none;
 }
+
+#message{
+    display:none;
+    padding: 0.1em;
+  }
+  
+  #message p{
+    padding: 10px 35px;
+  }
+  
+  .valid:before{
+    position: relative;
+    left: -35px;
+    content: "✔";
+    color: green;
+  }
+  
+  .invalid:before{
+    position: relative;
+    left: -35px;
+    content: "✖";
+    color: red;
+  }

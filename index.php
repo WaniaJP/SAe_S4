@@ -12,8 +12,8 @@
         <a class="logo" herf="#">Logo</a>
         <div class="nav-lists">
            <ul>
-                <li class="active"><a href="index.html">Accueil</a></li>
-                <li><a href="connexion.html">Sondage</a></li>
+                <li class="active"><a href="index.php">Accueil</a></li>
+                <li><a href="login.php">Sondage</a></li>
             </ul>  
         </div>
         <img src="assets/navigation-bar.png" class="navbar-close">
@@ -39,7 +39,7 @@
                 <div class="child second">
                     <h1> demo du sondage </h1> 
                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>              
-                        <button class="btn">Démarrer le sondage !</button>
+                        <button class="btn" onclick="window.location.href = 'login.php'" >Démarrer le sondage !</button>
                 </div>
             </div>
 
@@ -50,7 +50,7 @@
         const menuHamburger = document.querySelector(".navbar-close")
         const navLinks = document.querySelector(".nav-lists")
         menuHamburger.addEventListener('click',()=>{
-        navLinks.classList.toggle('mobile-menu')
+            navLinks.classList.toggle('mobile-menu')
         })
     </script>
 </body>
