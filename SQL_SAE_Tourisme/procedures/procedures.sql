@@ -20,6 +20,8 @@ END $
 
 delimiter $$
 CREATE FUNCTION existeUtilisateur(nom_ VARCHAR(50), email_ VARCHAR(50)) RETURNS BOOLEAN
+READS SQL DATA
+DETERMINISTIC
 BEGIN
    if ((SELECT COUNT(*) FROM Utilisateur C WHERE (C.nom=nom_ and C.email=email_))<>0) THEN
     RETURN TRUE;
