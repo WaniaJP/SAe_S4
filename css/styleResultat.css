@@ -22,7 +22,6 @@ html, body {
 .graphique {
     width:600px;
     height: 300px;
-    background-color: black;
 }
 .block p {
     width: 500px;
