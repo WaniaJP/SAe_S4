@@ -6,6 +6,8 @@ html, body {
 
 #tabsPourGraphiques {
     visibility: hidden;
+    height: 0px;
+    overflow: hidden;
 }
 
 
