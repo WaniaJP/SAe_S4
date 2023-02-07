@@ -55,7 +55,7 @@
     </div>
 </body>
 <?php
-
+/* alimsPlusChoisis */
 $alimsChoix = $sondage -> prepare("SELECT AL.Nom_Fr, count(S.Alim_Code)
 FROM REPONSE_SONDAGE S JOIN  ALIMENTS AL ON S.Alim_Code = AL.Alim_Code 
 GROUP BY S.Alim_Code, AL.Nom_Fr
@@ -64,39 +64,44 @@ LIMIT 15;
 ");
 $alimsChoix->execute();
 $alimsChoix = $alimsChoix ->fetchAll();
-$alimsChoixValeur = creerTabValeur($alimsChoix);
-$alimsChoixCle = creerTabCle($alimsChoix);
-function creerTabValeur($tab) {
+$alimsChoixNbChoix = creerTab($alimsChoix, 1);
+$alimsChoixAlim = creerTab($alimsChoix, 0);
+    
+
+/* alimsPlusCaloriques */
+$alimsCalSucres = $sondage -> prepare("SELECT AL.Nom_Fr, Energie_Reglement_UE_kcal100g  AS cal
+FROM donnees_sante DS JOIN  ALIMENTS AL ON DS.Alim_Code = AL.Alim_Code 
+ORDER BY cal DESC
+LIMIT 5;
+");
+$alimsCalSucres->execute();
+$alimsCalSucres = $alimsCalSucres ->fetchAll();
+$alimsCalSucresNom = creerTab($alimsCalSucres, 0);
+$alimsCalSucresValeurCal = creerTab($alimsCalSucres, 1);
+
+function creerTab($tab, $col) {
     $i = 0;
     foreach ($tab as $row) {
         if ($i == 0) {
-            $tab = $row[1];
+            $tab = $row[$col];
         } else {
-            $tab = $tab . "." . $row[1];
+            $tab = $tab . ";" . $row[$col];
         }
         $i += 1;
     }
     return $tab;
 }
-function creerTabCle($tab) {
-    $i = 0;
-    foreach ($tab as $row) {
-        if ($i==0) {
-            $tab = $row[0];
-        }
-        else {
-            $tab = $tab .".". $row[0];
-        }
-        $i+=1;
-    }
-    return $tab;
-}
-
 
 ?>
 <div id="tabsPourGraphiques">
-    <p id=tabValeurAlimsChoix><?php echo $alimsChoixValeur; ?></p>
-    <p id=tabCleAlimsChoix><?php echo $alimsChoixCle; ?></p>
+    /* alimsPlusChoisis */
+    <p id=tabValeurAlimsChoix><?php echo $alimsChoixNbChoix; ?></p>
+    <p id=tabCleAlimsChoix><?php echo $alimsChoixAlim; ?></p>
+
+    /* alimsPlusCaloriques */
+    <p id=tabValeurAlimsCal><?php echo $alimsCalSucresValeurCal; ?></p>
+    <p id=tabAlimsCalSucres><?php echo $alimsCalSucresNom; ?></p>
+    
 </div>
 
 </html>
