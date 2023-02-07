@@ -4,6 +4,11 @@ html, body {
     min-height:100vh;
 }
 
+#tabsPourGraphiques {
+    visibility: hidden;
+}
+
+
 #intro {
     display: flex;
     flex-direction: column;

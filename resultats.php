@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Résultats</title>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="./js/resultats.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
     <link rel="stylesheet" href="./css/styleResultat.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -93,32 +94,9 @@ function creerTabCle($tab) {
 
 
 ?>
-<script type="text/javascript">
-    google.charts.load('current', {'packages':['corechart']});
-    google.charts.setOnLoadCallback(alimentsLesPlusChoisis);
+<div id="tabsPourGraphiques">
+    <p id=tabValeurAlimsChoix><?php echo $alimsChoixValeur; ?></p>
+    <p id=tabCleAlimsChoix><?php echo $alimsChoixCle; ?></p>
+</div>
 
-function alimentsLesPlusChoisis() {
-    var data = new google.visualization.DataTable();
-    var tab = <?php echo json_encode($alimsChoixValeur); ?>;
-    var tabValeur = tab.split('.');
-    var tab2 = <?php echo json_encode($alimsChoixCle) ?>;
-    var tabCle = tab2.split('.');
-    data.addColumn('string', 'Aliment');
-    data.addColumn('number', 'Nombre de fois choisi');
-    for (i=0; i<tabValeur.length; ++i) {
-        data.addRow([tabCle[i], parseInt(tabValeur[i], 10)]);
-    }
-
-    var options = {
-        title: 'Les 15 aliments les plus choisis'
-    };
-
-
-
-    var chart = new google.visualization.PieChart(document.getElementById('graphique1'));
-    chart.draw(data, options);
-
-}
-
-</script>
 </html>
