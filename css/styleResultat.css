@@ -19,7 +19,7 @@ html, body {
 }
 #intro p {
     width: 400px;
-    margin-bottom: 100px;
+    margin-bottom: 60px;
 }
 
 #blocks {
@@ -33,18 +33,18 @@ html, body {
 }
 .block p {
     width: 500px;
-    margin: 20px;
+    margin: 0px;
 }
 .block {
     display: flex;
     flex-direction: row;
     width:max-content;
+    margin-top: 20px;
+    margin-bottom: 20px;
     align-items: center;
 }
 
-.block .graphique {
-    margin: 20px;
-}
+
 
 div#block2.block{
     flex-direction: row-reverse;
@@ -52,6 +52,10 @@ div#block2.block{
 
 div#block4.block {
     flex-direction: column;
+}
+
+#block4 {
+    margin-bottom: 100px;
 }
 
 @media (max-width: 1280px) {
@@ -83,7 +87,7 @@ div#block4.block {
     }
 
     .block .p {
-        margin : 10px;
+        margin : 0px;
     }
     .block {
         margin-top: 50px;

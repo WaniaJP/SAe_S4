@@ -24,33 +24,34 @@
     ?>
     <div id="intro">
     <h1>Résultats du sondage</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, 
-        dictum est a, mattis tellus. Sed dignissim, metus nec fringilla</p>
+    <p>Voici les résultats du sondage qui se trouvent ci-dessous. Certaines intéractions
+        sont possibles avec les différents graphiques, par exemple en les survolants
+        avec la souris. Ils ont été réalisés avec google chart.
+    </p>
     </div>
     <div id="blocks">
     <div class="block" id="block1">
         <div class="graphique" id="graphique1"></div>
-        <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et 
-            velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora 
-            torquent per conubia nostra, per inceptos himenaeos.</p>
+        <p class="description">Ce graphique en secteurs présente les 15 aliments les plus choisis
+            par les sondés.</p>
     </div>
     <div class="block" id="block2">
     <div class="graphique" id="graphique2"></div>
-    <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et 
-            velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora 
-            torquent per conubia nostra, per inceptos himenaeos.</p>
+    <p class="description">Ce graphique en barres présente les 5 aliments les plus caloriques.
+        
+
+    </p>
     </div>
     <div class="block" id="block3">
     <div class="graphique" id="graphique3"></div>
-    <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et 
-            velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora 
-            torquent per conubia nostra, per inceptos himenaeos.</p>
+    <p class="description">Ce graphique en barre présente les types d'aliments les plus représentés,
+        par exemple les légumes, les viandes etc. Survoler avec la souris le graphique pour faire apparaître
+        le nom des types d'aliments.
+    </p>
     </div>
     <div class="block" id="block4">
     <div class="graphique" id="graphique4"></div>
-    <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et 
-            velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora 
-            torquent per conubia nostra, per inceptos himenaeos.</p>
+    <p class="description">Ce graphique en anneau met en relief le taux de sondés par ville.</p>
     </div>
     </div>
 </body>
