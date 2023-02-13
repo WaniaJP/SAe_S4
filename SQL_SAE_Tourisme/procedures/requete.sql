@@ -15,10 +15,16 @@ LIMIT 5;
 SELECT ss_groupe_aliments.Nom_FR, COUNT(aliments.Grp_Code)
 FROM ss_groupe_aliments LEFT JOIN aliments ON aliments.SS_Grp_Code = ss_groupe_aliments.SS_Grp_Code
 GROUP BY ss_groupe_aliments.Nom_FR
-ORDER BY COUNT(aliments.Grp_Code) DESC;
+ORDER BY COUNT(aliments.Grp_Code) DESC
+LIMIT 15;
 
 /* Les différentes villes des sondés */
 SELECT COUNT(utilisateur.ville), utilisateur.Ville
 FROM utilisateur
 GROUP BY utilisateur.Ville;
 
+/* Les 15 aliments les plus sucrés */
+SELECT AL.Nom_Fr, Sucres_g100g  AS sucre
+FROM donnees_sante DS JOIN  ALIMENTS AL ON DS.Alim_Code = AL.Alim_Code 
+ORDER BY sucre DESC
+LIMIT 15;

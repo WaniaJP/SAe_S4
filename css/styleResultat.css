@@ -11,20 +11,21 @@ html, body {
 }
 
 #checkbox {
-    width: 400px;
+    width: 500px;
     margin: auto;
 }
+
 #intro {
     display: flex;
     flex-direction: column;
     align-items: left;
-    margin-left: 150px;
+    text-align: justify;
+    margin-left: 100px;
 }
 #intro p {
     width: 400px;
-    margin-bottom: 60px;
-    text-align: justify;
 }
+
 
 #blocks {
     display: flex;
@@ -32,56 +33,64 @@ html, body {
     align-items: center;
 }
 .graphique {
-    width:600px;
+    width:1000px;
     height: 500px;
 }
 .block p {
-    width: 500px;
-    margin: 0px;
-    text-align: center;
-    text-justify: left;
+    width: 800px;
+    margin: 20px;
 }
 .block {
+    width: 1000px;
     display: flex;
-    flex-direction: row;
-    width:max-content;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    align-items: center;
-}
-
-
-
-div#block2.block{
-    flex-direction: row-reverse;
-}
-
-div#block4.block {
     flex-direction: column;
+    align-items: center;
+    border: 2px solid black;
+    box-shadow: 10px 10px 10px 10px rgb(139, 139, 139);
+    border-radius: 5px;
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
-#block4 {
-    margin-bottom: 100px;
-}
+
+
 
 @media (max-width: 1280px) {
-    .block {
-        flex-direction: column;
+    .graphique {
+        width:500px;
+        height: 500px;
     }
-    div#block2.block{
-        flex-direction: column;
+    .block p {
+        width: 400px;
+    }
+    .block {
+        width: 500px;
     }
 
 }
 
 @media (max-width: 670px) {
+    #intro {
+    align-items: center;
+    text-align: center;
+    align-content: center;
+    justify-content: center;
+    margin-left: 0px;
+    margin-bottom: 50px;
+    }
+    #intro p {
+        width: 300px;
+    }
+    #checkbox {
+        width: 300px;
+        margin: auto;
+    }
     .graphique {
         width:300px;
         height: 150px;
     }
     .block p {
         width: 300px;
-        margin: 30px;
     }
 
     #intro p {
@@ -93,10 +102,11 @@ div#block4.block {
     }
 
     .block .p {
-        margin : 0px;
+        margin : 10px;
     }
     .block {
         margin-top: 50px;
         margin-bottom: 50px;
+        width: 300px;
     }
 }

@@ -1,32 +1,10 @@
-google.load('visualization', '1.0', {'packages':['corechart'], 'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY', 'callback': drawCharts});
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(alimentsLesPlusChoisis);
+google.charts.setOnLoadCallback(alimsPlusCaloriques);
+google.charts.setOnLoadCallback(typesAlimsPlusRepresentes);
+google.charts.setOnLoadCallback(toutesVilles);
+google.charts.setOnLoadCallback(nuage);
 
-function drawCharts() {
-  google.charts.setOnLoadCallback(alimentsLesPlusChoisis);
-  google.charts.setOnLoadCallback(alimsPlusCaloriques);
-  google.charts.setOnLoadCallback(typesAlimsPlusRepresentes);
-  google.charts.setOnLoadCallback(toutesVilles);
-}
-
-// Window.onLoad="init()";
-// function init() {
-//   var figure1 = document.getElementById("block1");
-//   var figure2 = document.getElementById("block2");
-//   var figure3 = document.getElementById("block3");
-//   var figure4 = document.getElementById("block4");
-  
-//   if (document.getElementById("choix").value == null) {
-//     document.getElementById("figure1").style = "height: 0px; visibility: hidden; overflow: hidden;"
-//   }
-//   if (document.getElementById("calories").value == null) {
-//     document.getElementById("figure2").style = "height: 0px; visibility: hidden; overflow: hidden;"
-//   }
-//   if (document.getElementById("types").value == null) {
-//     document.getElementById("figure3").style = "height: 0px; visibility: hidden; overflow: hidden;"
-//   }
-//   if (document.getElementById("villes").value == null) {
-//     document.getElementById("figure4").style = "height: 0px; visibility: hidden; overflow: hidden;"
-//   }
-// }
 
 
 
@@ -63,7 +41,7 @@ function alimsPlusCaloriques() {
     var tab2 = document.getElementById("tabAlimsCalSucres").textContent;
     var tabAlim = tab2.split(';');
     data.addColumn('string', 'Aliment');
-    data.addColumn('number', 'calories')
+    data.addColumn('number', 'calories');
     for (i=0; i<tabCal.length; ++i) {
         data.addRow([tabAlim[i], parseInt(tabCal[i], 10)]);
     }
@@ -93,13 +71,13 @@ function alimsPlusCaloriques() {
         var tab2 = document.getElementById("tabAlimsNB").textContent;
         var tabNBAlim = tab2.split(';');
         data.addColumn('string', 'type aliments');
-        data.addColumn('number', 'Nombre aliments')
+        data.addColumn('number', 'Nombre aliments');
         for (i=0; i<tabNBAlim.length; ++i) {
             data.addRow([tabType[i], parseInt(tabNBAlim[i], 10)]);
         }
 
         var options = {
-          title: "Types d'aliments les plus représentés ",
+          title: "Les 15 types d'aliments les plus représentés ",
           legend: { position: 'none' },
           vAxis: { scaleType: 'mirrorLog' },
           colors: ['#e7711c'],
@@ -118,8 +96,8 @@ function alimsPlusCaloriques() {
         var tabVilles = tab.split(';');
         var tab2 = document.getElementById("tabCountVilles").textContent;
         var tabCountVilles = tab2.split(';');
-        data.addColumn('string', 'Ville')
-        data.addColumn('number', 'nombre de sondés')
+        data.addColumn('string', 'Ville');
+        data.addColumn('number', 'nombre de sondés');
         for (i=0; i<tabCountVilles.length; ++i) {
             data.addRow([tabVilles[i], parseInt(tabCountVilles[i], 10)]);
         }
@@ -135,6 +113,30 @@ function alimsPlusCaloriques() {
       };
 
         var chart = new google.visualization.PieChart(document.getElementById('graphique4'));
+
+        chart.draw(data, options);
+      }
+
+      function nuage() {
+        var data = new google.visualization.DataTable();
+        var tabChoix = document.getElementById("tabValeurAlimsChoix").textContent;
+        var tabChoix = tabChoix.split(';');
+        var tabSucre = document.getElementById("tabSucre").textContent;
+        var tabSucre = tabSucre.split(';');
+        data.addColumn('number', 'choixAlim');
+        data.addColumn('number', 'taux de Sucre');
+        for (i=0; i<tabSucre.length; ++i) {
+            data.addRow([parseInt(tabChoix[i], 10), parseInt(tabSucre[i], 10)]);
+        }
+
+        var options = {
+          title: 'Taux de sucre en fonction de la popularité',
+          hAxis: {title: 'Popularité', minValue: 0, maxValue: 10},
+          vAxis: {title: 'Taux de sucre', minValue: 0, maxValue: 10},
+          legend: 'none'
+        };
+
+        var chart = new google.visualization.ScatterChart(document.getElementById('graphique5'));
 
         chart.draw(data, options);
       }

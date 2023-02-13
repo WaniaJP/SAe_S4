@@ -25,7 +25,7 @@
     <div id="intro">
     <h1>Résultats du sondage</h1>
     <p>Pour afficher les résultats du sondage, sélectionner les graphiques à afficher puis cliquer sur afficher. Certaines intéractions
-        sont possibles avec les différents graphiques, par exemple en les survolants
+        sont possibles avec les différents graphiques, par exemple en les survolant
         avec la souris. Ils ont été réalisés avec google chart.
     </p>
     </div>
@@ -48,6 +48,10 @@
         <input type="checkbox" id="villes" name="graphique4" value="villes">
         <label>Les différentes villes des sondés</label>
         </div>
+        <div>
+        <input type="checkbox" id="villes" name="graphique5" value="villes">
+        <label>Les aliments les plus choisis en rapport avec leur taux de sucre</label>
+        </div>
         <button type="submit">Afficher</button>
     </fieldset>
     </form>
@@ -67,13 +71,13 @@
     <div class="block" id="block2">
     <div class="graphique" id="graphique2"></div>
     <p class="description">Ce graphique en barres présente les 5 aliments les plus caloriques.
+
+    </p>
+    </div>
     <?php
     }
     if (isset($_GET["graphique3"])) {
     ?>
-
-    </p>
-    </div>
     <div class="block" id="block3">
     <div class="graphique" id="graphique3"></div>
     <p class="description">Ce graphique en barre présente les types d'aliments les plus représentés,
@@ -89,9 +93,16 @@
     <div class="graphique" id="graphique4"></div>
     <p class="description">Ce graphique en anneau met en relief les différentes villes d'origine des sondés.</p>
     </div>
+    <?php }
+        if (isset($_GET["graphique5"])) {
+    ?>
+    <div class="block" id="block5">
+    <div class="graphique" id="graphique5"></div>
+    <p class="description">Ce nuage de points expose les aliments les plus choisis en fonction de leur taux de sucre.</p>
     </div>
     <?php }
     ?>
+    </div>
 </body>
 <?php
 /* Les aliments les plus choisis */
@@ -105,13 +116,14 @@ $alimsChoix->execute();
 $alimsChoix = $alimsChoix ->fetchAll();
 $alimsChoixNbChoix = creerTab($alimsChoix, 1);
 $alimsChoixAlim = creerTab($alimsChoix, 0);
-    
+
 
 /* Les aliments les plus représentées  */
 $alimsPlusChoisis = $sondage -> prepare("SELECT ss_groupe_aliments.Nom_FR, COUNT(aliments.Grp_Code)
 FROM ss_groupe_aliments LEFT JOIN aliments ON aliments.SS_Grp_Code = ss_groupe_aliments.SS_Grp_Code
 GROUP BY ss_groupe_aliments.Nom_FR
-ORDER BY COUNT(aliments.Grp_Code) DESC;
+ORDER BY COUNT(aliments.Grp_Code) DESC
+LIMIT 15;
 ");
 $alimsPlusChoisis->execute();
 $alimsPlusChoisis = $alimsPlusChoisis ->fetchAll();
@@ -139,6 +151,15 @@ $villes = $villes-> fetchAll();
 $toutesVilles = creerTab($villes, 1);
 $countVilles = creerTab($villes, 0);
 
+/* Le taux de sucre des aliments les plus choisis*/
+$alimsSucres = $sondage -> prepare("SELECT AL.Nom_Fr, Sucres_g100g FROM donnees_sante DS INNER JOIN ALIMENTS AL ON DS.Alim_Code 
+= AL.Alim_Code INNER JOIN (SELECT AL.Nom_Fr, count(S.Alim_Code) FROM REPONSE_SONDAGE S 
+JOIN ALIMENTS AL ON S.Alim_Code = AL.Alim_Code GROUP BY AL.Nom_Fr ORDER BY 2 DESC) AS choix ON choix.Nom_Fr = AL.Nom_Fr;
+");
+$alimsSucres->execute();
+$alimsSucres = $alimsSucres-> fetchAll();
+$alimsSucresTab = creerTab($alimsSucres, 1);
+
 function creerTab($tab, $col) {
     $i = 0;
     foreach ($tab as $row) {
@@ -151,7 +172,6 @@ function creerTab($tab, $col) {
     }
     return $tab;
 }
-
 ?>
 <div id="tabsPourGraphiques">
     /* Les aliments les plus choisis */
@@ -169,6 +189,10 @@ function creerTab($tab, $col) {
     /* Les différentes villes des sondés */
     <p id=tabVilles><?php echo $toutesVilles; ?></p>
     <p id="tabCountVilles"><?php echo $countVilles; ?></p>
+
+    /* Le taux de sucre des aliments les plus choisis */
+    <p id=tabSucre><?php echo $alimsSucresTab; ?></p>
+    
 
 </div>
 
