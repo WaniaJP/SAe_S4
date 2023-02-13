@@ -20,6 +20,7 @@ html, body {
 #intro p {
     width: 400px;
     margin-bottom: 60px;
+    text-align: justify;
 }
 
 #blocks {
@@ -34,6 +35,8 @@ html, body {
 .block p {
     width: 500px;
     margin: 0px;
+    text-align: center;
+    text-justify: left;
 }
 .block {
     display: flex;

@@ -51,7 +51,7 @@
     </div>
     <div class="block" id="block4">
     <div class="graphique" id="graphique4"></div>
-    <p class="description">Ce graphique en anneau met en relief le taux de sondés par ville.</p>
+    <p class="description">Ce graphique en anneau met en relief les différentes villes d'origine des sondés.</p>
     </div>
     </div>
 </body>

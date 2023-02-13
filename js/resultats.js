@@ -104,13 +104,13 @@ function alimsPlusCaloriques() {
             data.addRow([tabVilles[i], parseInt(tabCountVilles[i], 10)]);
         }
 
-        var options = {        
+        var options = {     
           pieHole: 0.5,
           pieSliceTextStyle: {
             color: 'black',
           },
           legend: 'none',
-          title: 'Le taux de sondés par ville',
+          title: 'Les différentes villes des sondés',
           pieStartAngle: 100,
       };
 
