@@ -10,12 +10,15 @@ html, body {
     overflow: hidden;
 }
 
-
+#checkbox {
+    width: 400px;
+    margin: auto;
+}
 #intro {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    align-items: left;
+    margin-left: 150px;
 }
 #intro p {
     width: 400px;

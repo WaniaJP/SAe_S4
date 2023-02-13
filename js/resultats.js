@@ -7,6 +7,26 @@ function drawCharts() {
   google.charts.setOnLoadCallback(toutesVilles);
 }
 
+// Window.onLoad="init()";
+// function init() {
+//   var figure1 = document.getElementById("block1");
+//   var figure2 = document.getElementById("block2");
+//   var figure3 = document.getElementById("block3");
+//   var figure4 = document.getElementById("block4");
+  
+//   if (document.getElementById("choix").value == null) {
+//     document.getElementById("figure1").style = "height: 0px; visibility: hidden; overflow: hidden;"
+//   }
+//   if (document.getElementById("calories").value == null) {
+//     document.getElementById("figure2").style = "height: 0px; visibility: hidden; overflow: hidden;"
+//   }
+//   if (document.getElementById("types").value == null) {
+//     document.getElementById("figure3").style = "height: 0px; visibility: hidden; overflow: hidden;"
+//   }
+//   if (document.getElementById("villes").value == null) {
+//     document.getElementById("figure4").style = "height: 0px; visibility: hidden; overflow: hidden;"
+//   }
+// }
 
 
 

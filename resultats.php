@@ -24,21 +24,53 @@
     ?>
     <div id="intro">
     <h1>Résultats du sondage</h1>
-    <p>Voici les résultats du sondage qui se trouvent ci-dessous. Certaines intéractions
+    <p>Pour afficher les résultats du sondage, sélectionner les graphiques à afficher puis cliquer sur afficher. Certaines intéractions
         sont possibles avec les différents graphiques, par exemple en les survolants
         avec la souris. Ils ont été réalisés avec google chart.
     </p>
     </div>
+    <form action='' method="get">
+    <fieldset id="checkbox">
+        <legend>Choisir les graphiques qui s'affichent</legend>
+        <div>
+        <input type="checkbox" id="choix" name="graphique1" value="choix">
+        <label>Les aliments les plus choisis</label>
+        </div>
+        <div>
+        <input type="checkbox" id="calories" name="graphique2" value="calories">
+        <label>Les aliments les plus caloriques</label>
+        </div>
+        <div>
+        <input type="checkbox" id="types" name="graphique3" value="types">
+        <label>Les aliments les plus représentés</label>
+        </div>
+        <div>
+        <input type="checkbox" id="villes" name="graphique4" value="villes">
+        <label>Les différentes villes des sondés</label>
+        </div>
+        <button type="submit">Afficher</button>
+    </fieldset>
+    </form>
     <div id="blocks">
+    <?php 
+    if (isset($_GET["graphique1"])) {
+    ?>
     <div class="block" id="block1">
         <div class="graphique" id="graphique1"></div>
         <p class="description">Ce graphique en secteurs présente les 15 aliments les plus choisis
             par les sondés.</p>
     </div>
+    <?php
+    }
+    if (isset($_GET["graphique2"])) {
+    ?>
     <div class="block" id="block2">
     <div class="graphique" id="graphique2"></div>
     <p class="description">Ce graphique en barres présente les 5 aliments les plus caloriques.
-        
+    <?php
+    }
+    if (isset($_GET["graphique3"])) {
+    ?>
 
     </p>
     </div>
@@ -49,11 +81,17 @@
         le nom des types d'aliments.
     </p>
     </div>
+    <?php
+    }
+        if (isset($_GET["graphique4"])) {
+    ?>
     <div class="block" id="block4">
     <div class="graphique" id="graphique4"></div>
     <p class="description">Ce graphique en anneau met en relief les différentes villes d'origine des sondés.</p>
     </div>
     </div>
+    <?php }
+    ?>
 </body>
 <?php
 /* Les aliments les plus choisis */
