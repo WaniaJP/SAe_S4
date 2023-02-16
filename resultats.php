@@ -49,7 +49,7 @@
         <label>Les différentes villes des sondés</label>
         </div>
         <div>
-        <input type="checkbox" id="villes" name="graphique5" value="villes">
+        <input type="checkbox" id="villes" name="graphique5" value="sucre">
         <label>Les aliments les plus choisis en rapport avec leur taux de sucre</label>
         </div>
         <button type="submit">Afficher</button>
