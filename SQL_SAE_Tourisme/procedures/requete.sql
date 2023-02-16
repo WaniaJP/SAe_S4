@@ -23,8 +23,7 @@ SELECT COUNT(utilisateur.ville), utilisateur.Ville
 FROM utilisateur
 GROUP BY utilisateur.Ville;
 
-/* Les 15 aliments les plus sucrés */
-SELECT AL.Nom_Fr, Sucres_g100g  AS sucre
-FROM donnees_sante DS JOIN  ALIMENTS AL ON DS.Alim_Code = AL.Alim_Code 
-ORDER BY sucre DESC
-LIMIT 15;
+/* Les 15 aliments les plus sucrés en rapport avec leur popularité */
+SELECT AL.Nom_Fr, ROUND(Sucres_g100g, 2) FROM donnees_sante DS INNER JOIN ALIMENTS AL ON DS.Alim_Code 
+= AL.Alim_Code INNER JOIN (SELECT AL.Nom_Fr, count(S.Alim_Code) FROM REPONSE_SONDAGE S 
+RIGHT JOIN ALIMENTS AL ON S.Alim_Code = AL.Alim_Code GROUP BY AL.Nom_Fr ORDER BY 2 DESC) AS choix ON choix.Nom_Fr = AL.Nom_Fr;

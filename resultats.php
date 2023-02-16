@@ -15,7 +15,7 @@
             $sondage = new PDO(
                 'mysql:host=localhost;dbname=sondage;charset=utf8',
                 'root',
-                'root'
+                ''
             );
         } catch (Exception $e) {
             die('Erreur : ' . $e->getMessage());
@@ -152,13 +152,20 @@ $toutesVilles = creerTab($villes, 1);
 $countVilles = creerTab($villes, 0);
 
 /* Le taux de sucre des aliments les plus choisis*/
-$alimsSucres = $sondage -> prepare("SELECT AL.Nom_Fr, Sucres_g100g FROM donnees_sante DS INNER JOIN ALIMENTS AL ON DS.Alim_Code 
+$alimsSucres = $sondage -> prepare("SELECT AL.Nom_Fr, ROUND(Sucres_g100g, 2) FROM donnees_sante DS INNER JOIN ALIMENTS AL ON DS.Alim_Code 
 = AL.Alim_Code INNER JOIN (SELECT AL.Nom_Fr, count(S.Alim_Code) FROM REPONSE_SONDAGE S 
-JOIN ALIMENTS AL ON S.Alim_Code = AL.Alim_Code GROUP BY AL.Nom_Fr ORDER BY 2 DESC) AS choix ON choix.Nom_Fr = AL.Nom_Fr;
-");
+RIGHT JOIN ALIMENTS AL ON S.Alim_Code = AL.Alim_Code GROUP BY AL.Nom_Fr ORDER BY 2 DESC) AS choix ON choix.Nom_Fr = AL.Nom_Fr;");
 $alimsSucres->execute();
 $alimsSucres = $alimsSucres-> fetchAll();
 $alimsSucresTab = creerTab($alimsSucres, 1);
+$alimsChoix2 = $sondage -> prepare("SELECT AL.Nom_Fr, count(S.Alim_Code)
+FROM REPONSE_SONDAGE S JOIN  ALIMENTS AL ON S.Alim_Code = AL.Alim_Code 
+GROUP BY S.Alim_Code, AL.Nom_Fr
+ORDER BY 2 DESC
+");
+$alimsChoix2->execute();
+$alimsChoix2 = $alimsChoix2-> fetchAll();
+$alimsChoix2Tab = creerTab($alimsChoix2, 1);
 
 function creerTab($tab, $col) {
     $i = 0;
@@ -192,6 +199,7 @@ function creerTab($tab, $col) {
 
     /* Le taux de sucre des aliments les plus choisis */
     <p id=tabSucre><?php echo $alimsSucresTab; ?></p>
+    <p id=tabSucreChoix><?php echo $alimsChoix2Tab; ?></p>
     
 
 </div>

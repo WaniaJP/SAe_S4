@@ -17,7 +17,7 @@ function alimentsLesPlusChoisis() {
     data.addColumn('string', 'Aliment');
     data.addColumn('number', 'Nombre de fois choisi');
     for (i=0; i<tabValeur.length; ++i) {
-        data.addRow([tabCle[i], parseInt(tabValeur[i], 10)]);
+        data.addRow([tabCle[i], parseFloat(tabValeur[i], 10)]);
     }
 
     var options = {
@@ -43,7 +43,7 @@ function alimsPlusCaloriques() {
     data.addColumn('string', 'Aliment');
     data.addColumn('number', 'calories');
     for (i=0; i<tabCal.length; ++i) {
-        data.addRow([tabAlim[i], parseInt(tabCal[i], 10)]);
+        data.addRow([tabAlim[i], parseFloat(tabCal[i], 10)]);
     }
 
       var options = {
@@ -73,7 +73,7 @@ function alimsPlusCaloriques() {
         data.addColumn('string', 'type aliments');
         data.addColumn('number', 'Nombre aliments');
         for (i=0; i<tabNBAlim.length; ++i) {
-            data.addRow([tabType[i], parseInt(tabNBAlim[i], 10)]);
+            data.addRow([tabType[i], parseFloat(tabNBAlim[i], 10)]);
         }
 
         var options = {
@@ -99,7 +99,7 @@ function alimsPlusCaloriques() {
         data.addColumn('string', 'Ville');
         data.addColumn('number', 'nombre de sondés');
         for (i=0; i<tabCountVilles.length; ++i) {
-            data.addRow([tabVilles[i], parseInt(tabCountVilles[i], 10)]);
+            data.addRow([tabVilles[i], parseFloat(tabCountVilles[i], 10)]);
         }
 
         var options = {     
@@ -119,21 +119,21 @@ function alimsPlusCaloriques() {
 
       function nuage() {
         var data = new google.visualization.DataTable();
-        var tabChoix = document.getElementById("tabValeurAlimsChoix").textContent;
+        var tabChoix = document.getElementById("tabSucreChoix").textContent;
         var tabChoix = tabChoix.split(';');
         var tabSucre = document.getElementById("tabSucre").textContent;
         var tabSucre = tabSucre.split(';');
         data.addColumn('number', 'choixAlim');
         data.addColumn('number', 'taux de Sucre');
-        for (i=0; i<tabSucre.length; ++i) {
-            data.addRow([parseInt(tabChoix[i], 10), parseInt(tabSucre[i], 10)]);
+        for (i=0; i<tabChoix.length; ++i) {
+            data.addRow([parseFloat(tabChoix[i], 10.00), parseFloat(tabSucre[i], 10.00)]);
         }
 
         var options = {
           title: 'Taux de sucre en fonction de la popularité',
-          hAxis: {title: 'Popularité', minValue: 0, maxValue: 10},
-          vAxis: {title: 'Taux de sucre', minValue: 0, maxValue: 10},
-          legend: 'none'
+          hAxis: {title: 'Popularité', minValue: 0, maxValue: 10, format:'0.00'},
+          vAxis: {title: 'Taux de sucre', minValue: 0, maxValue: 10, format:'0.00'},
+          legend: 'none',
         };
 
         var chart = new google.visualization.ScatterChart(document.getElementById('graphique5'));
