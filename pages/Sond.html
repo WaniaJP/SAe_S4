@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="../script/sondage.js"></script>
+
+    <style>
+        .input-aliment.active{
+            background-color: red;
+        }
+
+        * {
+  box-sizing: border-box;
+}
+
+#input-recherche-groupe, #input-recherche-sgroupe, #input-recherche-ssgroupe{
+  background-position: 10px 12px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#liste-groupe, #liste-sgroupe, #liste-ssgroupe{
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#liste-groupe li div, #liste-sgroupe li div, #liste-ssgroupe li div{
+  border: 1px solid #ddd;
+  margin-top: -1px; /* Prevent double borders */
+  background-color: #f6f6f6;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
+  display: block
+}
+
+#liste-groupe li div:hover:not(.header) {
+  background-color: #eee;
+}
+        
+    </style>
+
+    <title>Document</title>
+</head>
+<body>
+    <div class="filtre">
+        <div class="categorie">
+            
+            <div class="groupe">
+                <input type="text" id="input-recherche-groupe" onkeyup="filtrageGroupe()" placeholder="Search for names.." title="Type in a name">
+                <ul id="liste-groupe">
+                </ul>
+            </div>
+            
+            <div class="ss-groupe">
+                <input type="text" id="input-recherche-sgroupe" onkeyup="filtrageSGroupe()" placeholder="Search for names.." title="Type in a name">
+                <ul id="liste-sgroupe">
+                </ul>
+            </div>
+            <div class="ss-ss-groupe">
+                <input type="text" id="input-recherche-ssgroupe" onkeyup="filtrageSSGroupe()" placeholder="Search for names.." title="Type in a name">
+                <ul id="liste-ssgroupe">
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="formulaire">
+        <div class="selection">
+            <form action="" method="post" id="form-aliment">
+                <input type="text" class="input-aliment" name="aliment1" placeholder="Aliment 1" required disabled>
+                <input type="text" class="input-aliment" name="aliment2" placeholder="Aliment 2" required disabled>
+                <input type="text" class="input-aliment" name="aliment3" placeholder="Aliment 3" required disabled>
+                <input type="text" class="input-aliment" name="aliment4" placeholder="Aliment 4" required disabled>
+                <input type="text" class="input-aliment" name="aliment5" placeholder="Aliment 5" required disabled>
+                <input type="text" class="input-aliment" name="aliment6" placeholder="Aliment 6" required disabled>
+                <input type="text" class="input-aliment" name="aliment7" placeholder="Aliment 7" required disabled>
+                <input type="text" class="input-aliment" name="aliment8" placeholder="Aliment 8" required disabled>
+                <input type="text" class="input-aliment" name="aliment9" placeholder="Aliment 9" required disabled>
+                <input type="text" class="input-aliment" name="aliment10" placeholder="Aliment 10" required disabled>
+                <input type="submit" value="Envoyer">
+            </form>
+        </div>
+        <div class="reponse">
+            <input list="ice-cream-flavors" id="liste" name="ice-cream-choice">
+            <datalist id="ice-cream-flavors">
+                <option value="Chocolate">
+                <option value="Coconut">
+                <option value="Mint">
+                <option value="Strawberry">
+                <option value="Vanilla">
+            </datalist>
+
+            <button id="button-next">Suivant</button>
+        </div>
+    </div>
+</body>
+</html>
